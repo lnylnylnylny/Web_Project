@@ -1,0 +1,297 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/* reset css 에서 가져온 초기화 */
+
+/* header */
+#logo {
+    height: 64px;
+    cursor: pointer;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 80px;
+    height: 80px;
+    box-shadow: rgb(0 0 0 / 8%) 0 1px 0;
+}
+
+#little-search {
+    display: flex;
+    justify-content: center;
+    min-width: 360px;
+    align-items: center;
+    border: 1px solid #DDDDDD;
+    border-radius: 40px;
+    padding: 0 8px;
+    height: 48px;
+    box-sizing: border-box;
+    width: 300px;
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 5% );
+}
+
+#little-search:hover {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.18);
+}
+
+.little-search_button {
+    padding: 0 16px;
+    white-space: nowrap;
+    display: block;
+    flex-shrink: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: rgb(34,34,34);
+    cursor: pointer;
+}
+
+little-search * {
+    cursor: pointer;
+}
+
+.little-search_button:nth-of-type(3) {
+    color: #717171;
+}
+
+.divider {
+    display: block;
+    flex-basis: 1px;
+    flex-shrink: 0;
+    background-color: #DDDDDD;
+    height: 24px;
+}
+
+#magnifying-glass-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FF385c;
+    border-radius: 50%;
+    height: 32px;
+    flex-basis: 32px;
+    flex-shrink: 0;
+}
+
+#magnifying-glass-icon{
+    width: 12px;
+}
+
+#do-airbnb {
+    font-size: 14px;
+    color: #222222;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 12px;
+    border-radius: 22%;
+}
+
+#do-airbnb:hover {
+    background-color: #f7f7f7;
+}
+
+#header-right-section {
+    display: flex;
+    gap: 8px;
+}
+
+#profile-section {
+    border: 1px solid #DDDDDD;
+    border-radius: 21px;
+    display: flex;
+    align-content: center;
+    padding: 5px 5px 5px 12px;
+    gap : 12px;
+    cursor: pointer;
+}
+
+#profile-section:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0,0.18);
+}
+
+/* bar */
+
+#category-bar {
+    display: flex;
+    padding: 20px 40px 0;
+    gap: 32px;
+    overflow: auto;
+}
+
+#category-bar::-webkit-scrollbar {
+    display: none;
+}
+
+.active-img {
+    display:none;
+}
+
+.category-button{
+    color: #717171;
+    height: 66px;
+    padding: 14px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.category-button img{
+    width: 28px;
+}
+
+.category-button:hover {
+    color : #000000;
+    border-bottom: 2px solid #DDDDDD;
+}
+
+.category-button:hover .active-img{
+    display: inline-block;
+}
+
+.category-button:hover .inactive-img {
+    display: none;
+}
+
+#active-category-button {
+    color: #000000;
+    border-bottom: 2px solid #000000;
+}
+
+.active-category-button .active-img {
+    display: inline;
+}
+
+.active-category-button .inactive-img {
+    display: none;
+}
+
+/* grid */
+
+.place-image-wrapper {
+    position: relative;
+    width: 308px;
+    height: 298px;
+    overflow: hidden;
+    border-radius: 23px;
+}
+
+.place-image-wrapper img {
+    width: 500px;
+    height: 500px;
+}
+
+.place-image-wrapper .heart-icon {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.description-section {
+    display: flex;
+    flex-direction: column;
+    color: rgb(34,34,34);
+    font-size: 15px;
+    gap: 3px;
+    margin-top: 13px;
+}
+
+.description-section_title{
+    
+    font-weight: 600;
+}
+
+#place-items-wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 308px);
+    justify-items: center;
+    align-items: center;
+    box-sizing: border-box;
+    gap: 40px 24px;
+}
+
+main {
+    display: flex;
+    padding: 30px 80px;
+    justify-content: center;
+}
+
+.heart-icon:active {
+    transform: scale(0.5);
+    transition: transform 0.25s ease;
+}
+
+#floating-map-button {
+    background-color: #222222;
+    position: fixed;
+    border-radius: 24px;
+    bottom :125px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #f7f7f7;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    padding: 14px 19px;
+    gap: 8px;
+    cursor: pointer;
+}
+
+#floating-map-button:hover {
+    box-shadow: 0 0 0 1px transparent, 0 0 0 4px transparent, 0 6px 16px rgba(0,0,0,0.12);
+    transform: translateX(-50%) scale(1.04);
+}
