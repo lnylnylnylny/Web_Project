@@ -1,0 +1,163 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*css start*/
+
+body {
+    height: 200vh;
+}
+
+header {
+    height: 34px;
+    background-color: #04120c;
+    color: #b8e1ee;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.button-in-header {
+    padding: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    height: 34px;
+    box-sizing: border-box;
+
+}
+
+.button-in-header:hover {
+    background-color: #127374 ;
+    
+}
+
+#right-buttons {
+    display: flex;
+}
+
+#active-menu {
+    background-color: #013A3B;
+}
+
+#main-image {
+    min-width: 1000px;
+}
+
+#image-wrapper {
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+#document-title {
+    color: #b8e1ee ;
+    font-size: 178%;
+    font-weight: 300;
+    letter-spacing: 10px;
+    margin-bottom: 40px;
+}
+
+#main-content-wrapper {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+#mountain-tag-wrapper {
+    display: flex;
+    font-size: 18px;
+    font-weight: 700;
+    gap: 50px;
+    flex-direction: column;
+}
+
+@media (min-width: 880px) {
+    #mountain-tah-wrapper {
+        flex-direction: row;
+    }
+}
+
+#mountain-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    
+}
+
+#mountain-content-list {
+    background-color: #b8e1ee;
+    color: #04120c;
+    width: 325px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+a {
+    color: unset;
+    text-decoration: unset;
+}
+
+.long-text {
+    display: none;
+}
+.short-text{
+    display: inline;
+}
+
+@media (min-width : 880px) {
+    .long-text{
+        display: inline;
+    }
+    .short-text {
+        display: none;
+    }
+}
