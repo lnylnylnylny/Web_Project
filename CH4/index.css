@@ -1,0 +1,229 @@
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*css start*/
+
+body {
+    background-color: #111;
+}
+
+#main-img-wrapper {
+    text-align: center;
+    padding-top: 139px;
+}
+
+#intro-main{
+    color: white;
+    display: flex;
+    justify-content: center;
+    width: 340px;
+    margin: 54px auto 140px;
+    font-size: 40px;
+    font-weight: 500;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+#intro-main p {
+    text-align: center;
+}
+
+#join-us-text {
+    opacity: .6;
+    font-size: 16px;
+    font-weight: 400;
+    margin-top: 74px;
+}
+
+#down-arrow-icon {
+    width: 33px;
+    animation: upAndDown 1s infinite;
+}
+
+@keyframes upAndDown {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+
+}
+
+.list-item {
+    display: inline;
+    font-size: 48px;
+    font-weight: 600;
+
+}
+
+#list-item-wrapper {
+    width: 383px;
+    margin: 0 auto 500px;
+
+}
+
+.list-item::before {
+    display: inline-block;
+    background-size: 51px 53px;
+    content: "";
+    width: 51px;
+    height: 53px;
+    background-image: url('./icons/dark_house.png');
+}
+
+.list-item#on {
+    color: white;
+}
+
+.list-item#on::before {
+    background-image: url('./icons/light_house.png');
+}
+
+#panel1-img {
+    overflow: hidden;
+    position: relative;
+    height: 320px;
+    margin-bottom: 500px;
+}
+
+#flying-santa-img {
+    position: absolute;
+    right: -80px;
+    height: 310px;
+    transform: translate(80px -13px) rotate(23deg);
+}
+
+#video {
+    height: 350px;
+    display: block;
+    margin: 0 auto;
+}
+
+#video-section {
+    margin-bottom: 1000px;
+}
+
+#fixed-description {
+    width: 622px;
+    margin: 30px auto 0;
+    color: white;
+    text-align: right;
+    font-size: 35px;
+    font-weight: 600;
+    line-height: 50px;
+    opacity: 0;
+    transform: translateY(100px);
+}
+
+#bank-beyond-wrapper {
+    height: 380px;
+
+}
+
+#bank-beyond {
+    display: flex;
+    justify-content: center;
+}
+
+#white-wrapper {
+    padding-top: 80px;
+    position: relative;
+    background-color: white;
+    height: 1000px;
+    z-index: 10000;
+}
+
+#slider-container {
+    margin: 0 auto;
+    width: 300px;
+    position: relative;
+}
+
+#slider-content-wrapper {
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+}
+
+#slider-content-wrapper::-webkit-scrollbar {
+    width: 0;
+}
+
+#slider-content {
+    display: flex;
+}
+
+.slider-image {
+    width: 300px;
+    height: 466px;
+    scroll-snap-align: center ;
+}
+
+.slider-button {
+    position: absolute;
+    bottom: -110px;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+#left-button {
+    left: 10px;
+}
+
+#right-button {
+    right : 10px;
+}
+
+#slider-index {
+    position: absolute;
+    bottom: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+}
