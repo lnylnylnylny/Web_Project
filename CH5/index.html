@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./index.css">
+        <title>Next Level Fairs</title>
+    </head>
+    <body>
+        <div class="cursor">
+            <div class="cursor_default">
+                <span class="cursor_default_inner"></span>
+            </div>
+            <div class="cursor_trace">
+                <span class="cursor_trace_inner"></span>
+            </div>
+        </div>
+        <section class="preloader">
+            <button class="preloader_btn">
+                <span class="preloader_btn_hold">HOLD</span>
+            </button>
+        </section>
+
+        <section class="header hidden-area">
+            <span class="circle" id="circle-1"></span>
+            <span class="circle" id="circle-2"></span>
+            <img src="./images/doosan.svg" alt="cube img" class="cube_img" id="cube_img_1">
+            <img src="./images/doosan.svg" alt="cube_img" class="cube_img" id="cube_img_2">
+            <img src="./images/doosan.svg" alt="cube_img" class="cube_img" id="cube_img_3">
+            <img src="./images/doosan.svg" alt="cube_img" class="cube_img" id="cube_img_4">
+            <h1 class="header_title">
+                <div>Doosan BEARS</div>
+                <div>PROJECT</div>
+            </h1>
+        </section>
+        <section class="poster hidden-area">
+            <div class="poster_parallax">
+                <div id="poster_img_wrapper_1" class="poster_img_wrapper">
+                    <img id="poster_img_1" src="./images/posterImages/poster_image_1.png" alt="poster" class="poster-img">
+                </div>
+                <div id="poster_img_wrapper_2" class="poster_img_wrapper">
+                    <img id="poster_img_2" src="./images/posterImages/poster_image_2.png" alt="poster" class="poster-img">
+                </div>
+                <div id="poster_img_wrapper_3" class="poster_img_wrapper">
+                    <img id="poster_img_3" src="./images/posterImages/poster_image_3.png" alt="poster" class="poster-img">
+                </div>
+            </div>
+        </section>
+    </body>
+    <script>
+        document.addEventListener("mousemove", (e) => {
+            const cursorDefaultInner = document.querySelector(".cursor_default_inner")
+            const cursorTraceInner = document.querySelector(".cursor_trace_inner")
+
+            cursorDefaultInner.style.top = e.clientY + "px"
+            cursorDefaultInner.style.left = e.clientX + "px"
+
+            cursorTraceInner.style.top = e.clientY + "px"
+            cursorTraceInner.style.left = e.clientX + "px"
+        })
+
+        const cursor = document.querySelector(".cursor")
+
+        document.addEventListener("mousedown", () => {
+            cursor.classList.add("cursor--active")
+        })
+
+        document.addEventListener("mouseup", () => {
+            cursor.classList.remove("cursor--active")
+        })
+
+        function createRipple(e) {
+            let ripple = document.createElement("span")
+
+            ripple.classList.add("ripple")
+
+            ripple.style.top = (e.clientY - ripple.clientHeight /2) + "px"
+            ripple.style.left = (e.clientX - ripple.clientWidth /2) + "px"
+            cursor.appendChild(ripple)
+
+            ripple.addEventListener("animationend", () => {
+                cursor.removeChild(ripple)
+            })
+        }
+
+        document.addEventListener("click", (e) => {
+            createRipple(e)
+        })
+
+        const preloaderBtn = document.querySelector(".preloader_btn")
+        let intervalId = null
+        let scale = 1
+
+        const preloaderHideThreshold = 18
+
+        function setPreloaderStyle(scale) {
+            preloaderBtn.style.transform = `scale(${scale})`
+            document.querySelector(".preloader_btn_hold").style.opacity = 1 - (scale - 1) / preloaderHideThreshold
+        }
+
+        const header = document.querySelector(".header")
+
+        preloaderBtn.addEventListener("mousedown", () => {
+            intervalId = setInterval(() => {
+                scale += 0.175;
+
+                setPreloaderStyle(scale)
+
+                if(scale >= 1 +preloaderHideThreshold) {
+                    
+                    document.querySelector(".preloader").classList.add("hidden-area")
+
+                    const poster = document.querySelector(".poster")
+
+                    header.classList.remove("hidden-area")
+                    poster.classList.remove("hidden-area")
+
+                    header.classList.add("shown-area")
+                    poster.classList.add("shown-area")
+
+                    clearInterval(intervalId)
+                }
+            }, 10)
+        })
+
+        preloaderBtn.addEventListener("mouseup", () => {
+            clearInterval(intervalId)
+
+            intervalId = setInterval(() => {
+                scale -= 0.175;
+
+                setPreloaderStyle(scale)
+
+                if (scale <= 1) {
+                    clearInterval(intervalId)
+                }
+            }, 10)
+        })
+
+        header.addEventListener("mousemove", (e) => {
+            const xRelativeToHeader = e.clientX / header.clientWidth
+            const yRelativeToHeader = e.clientY / header.clientHeight
+
+            document.querySelector(".header_title").style.transform = `translate(${xRelativeToHeader * -50}px, ${yRelativeToHeader * -50}px)`
+
+            document.querySelector("#circle-1").style.transform = `translate(${xRelativeToHeader * -25}px, ${yRelativeToHeader * -25}px)`
+            document.querySelector("#circle-2").style.transform = `translate(${xRelativeToHeader * -50}px, ${yRelativeToHeader * -50}px)`
+
+            document.querySelector("#cube_img_1").style.transform = `translate(${xRelativeToHeader * -15}px, ${yRelativeToHeader * -15}px)`
+            document.querySelector("#cube_img_2").style.transform = `translate(${xRelativeToHeader * -45}px, ${yRelativeToHeader * -45}px)`
+            document.querySelector("#cube_img_3").style.transform = `translate(${xRelativeToHeader * -80}px, ${yRelativeToHeader * -80}px)`
+            document.querySelector("#cube_img_4").style.transform = `translate(${xRelativeToHeader * -5}px, ${yRelativeToHeader * -5}px)`
+        })
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("poster_img_state_visible")
+                }
+            })
+        }, {threshold: 0.2})
+
+        document.querySelectorAll(".poster_img_wrapper").forEach((poster) => {
+            observer.observe(poster)
+        })
+
+        const posterParallax = document.querySelector(".poster_parallax")
+
+        posterParallax.addEventListener("mousemove", (e) =>{
+            const xRelativeToPosterParallax = e.clientX / posterParallax.clientWidth
+            const yRelativeToPosterParallax = e.clientY / posterParallax.clientHeight
+
+            document.querySelector("#poster_img_wrapper_2").style.transform = `translate(${xRelativeToPosterParallax * -40}px , ${yRelativeToPosterParallax * -40}px)`
+            document.querySelector("#poster_img_wrapper_3").style.transform = `translate(${xRelativeToPosterParallax * 40}px , ${yRelativeToPosterParallax * 40}px)`
+        })
+    </script>
+</html>
